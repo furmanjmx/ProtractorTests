@@ -2,7 +2,6 @@ var fixtures = require('./fixtures');
 
 describe('p2y', function () {
 
-
     it('Card 2 card test', function () {
 
         browser.get('http://p2y.com.ua');
