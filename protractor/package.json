@@ -7,7 +7,7 @@
     "postinstall": "webdriver-manager update",
     "test": "protractor conf.js"
   },
-  "author": "",
+  "author": "Furman",
   "license": "ISC",
   "devDependencies": {
     "jasmine-node": "^1.14.5",
