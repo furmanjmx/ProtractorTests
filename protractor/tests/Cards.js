@@ -8,7 +8,7 @@ describe('p2y', function () {
 
         var card = fixtures.cards[0];
         var form = element(by.css('.form'));
-
+        // fill form
         element(by.model('model.cardNumber')).sendKeys(card.number);
         element(by.model('model.expMonth')).sendKeys(card.expired.month);
         element(by.model('model.expYear')).sendKeys(card.expired.year);
