@@ -1,5 +1,4 @@
 var fixtures = require('./fixtures');
-
 describe('p2y', function () {
     it('Card 2 card test', function () {
         browser.get('http://nebo15.github.io/p2y.web');
@@ -18,9 +17,7 @@ describe('p2y', function () {
         // confirm pay
         form.submit();
         browser.isElementPresent(by.className('popup__header'));
-        browser.isElementPresent(by.linkText('Подтвердить'));
+        browser.isElementPresent(by.buttonText('Подтвердить'));
         confirm.click();
-        // assert message
-        browser.isElementPresent(by.linkText('В момент оплаты не было связи с Банком, в котором у вас обслуживается карта.'));
     });
 });
