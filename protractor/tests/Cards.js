@@ -1,18 +1,14 @@
 var fixtures = require('./fixtures');
 var protractor = require("protractor");
+
 describe('p2y', function () {
 
-    //var $timeout;
-    //beforeEach(inject(function (_$timeout_) {
-    //    $timeout = _$timeout_;
-    //}));
-
     it('Card 2 card test', function () {
-        browser.get('http://192.168.1.134:8080');   // http://nebo15.github.io/p2y.web
+
+        browser.get('http://nebo15.github.io/p2y.web');   // 192.168.1.134:8080
         var card = fixtures.cards[0];
         var form = element(by.css('.form'));
         var confirm = element(by.buttonText('Подтвердить'));
-        var print = element(by.buttonText('Сохранить квитанцию'));
         // fill form
         browser.isElementPresent(by.model('model.cardNumber'));
         element(by.model('model.cardNumber')).sendKeys(card.number);
@@ -23,9 +19,7 @@ describe('p2y', function () {
         element(by.model('model.receiver.cardNumber')).sendKeys(card.number);
         element(by.model('model.amount')).sendKeys('1');
         // confirm pay
-
         form.submit();
-        browser.isElementPresent(by.className('popup__header'));
         browser.isElementPresent(by.buttonText('Подтвердить'));
         confirm.click();
 
@@ -37,12 +31,9 @@ describe('p2y', function () {
         browser.isElementPresent(by.buttonText('Подтвердить'));
         form.submit();
 
+        browser.isElementPresent(by.partialButtonText('Сохранить квитанцию'));
         browser.sleep(500);
-        browser.ignoreSynchronization = false;
-
-        browser.findElements(by.buttonText('Сохранить квитанцию'));
-        browser.isElementPresent(by.buttonText('Сохранить квитанцию'));
-        browser.waitForAngular();
-        print.click();
+        element(by.xpath('/html/body/div[1]/div/div/div[2]/div[1]/div/div[2]/div[1]/ui-view/div/div[1]/div/p/a[1]')).click();
+        browser.sleep(10000); //TODO Assert document present on DIR
     });
 });
