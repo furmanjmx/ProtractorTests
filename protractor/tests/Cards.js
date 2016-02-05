@@ -5,7 +5,9 @@ describe('p2y', function () {
         browser.get('http://nebo15.github.io/p2y.web');
         var card = fixtures.cards[0];
         var form = element(by.css('.form'));
+        var confirm = element(by.buttonText('Подтвердить'));
         // fill form
+        browser.isElementPresent(by.model('model.cardNumber'));
         element(by.model('model.cardNumber')).sendKeys(card.number);
         element(by.model('model.expMonth')).sendKeys(card.expired.month);
         element(by.model('model.expYear')).sendKeys(card.expired.year);
@@ -13,6 +15,12 @@ describe('p2y', function () {
         element(by.model('model.phoneNumber')).sendKeys('931254212');
         element(by.model('model.receiver.cardNumber')).sendKeys(card.number);
         element(by.model('model.amount')).sendKeys('1');
+        // confirm pay
         form.submit();
+        browser.isElementPresent(by.className('popup__header'));
+        browser.isElementPresent(by.linkText('Подтвердить'));
+        confirm.click();
+        // assert message
+        browser.isElementPresent(by.linkText('В момент оплаты не было связи с Банком, в котором у вас обслуживается карта.'));
     });
 });
