@@ -33,7 +33,8 @@ describe('p2y', function () {
 
         browser.isElementPresent(by.partialButtonText('Сохранить квитанцию'));
         browser.sleep(500);
-        element(by.xpath('/html/body/div[1]/div/div/div[2]/div[1]/div/div[2]/div[1]/ui-view/div/div[1]/div/p/a[1]')).click();
-        browser.sleep(10000); //TODO Assert document present on DIR
-    });
+        element(by.xpath('/html/body/div[1]/div/div/div[2]/div[1]/div/div[2]/div[1]/ui-view/div/div[1]/div/p/a[2]')).click();
+        // assert image
+        browser.isElementPresent(by.tagName('img'));
+    })
 });
