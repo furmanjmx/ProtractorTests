@@ -5,7 +5,7 @@ describe('p2y', function () {
 
     it('Card 2 card test', function () {
 
-        browser.get('http://nebo15.github.io/p2y.web');   // 192.168.1.134:8080
+        browser.get('http://nebo15.github.io/p2y.web');
         var card = fixtures.cards[0];
         var form = element(by.css('.form'));
         var confirm = element(by.buttonText('Подтвердить'));
